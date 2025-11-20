@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: New Piskel-1.png (12)_0
+  m_Name: Rock
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2151193157882705245, guid: d45907c64bb61e74ebbd9304555edfa4, type: 3}
+  m_Sprite: {fileID: -2240335660451640227, guid: 0fdb89ac72662fe4885db32d43a16fe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
