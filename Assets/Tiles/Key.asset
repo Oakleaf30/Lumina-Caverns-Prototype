@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8989ff425b03fa439b7f8ba46b35eaf, type: 3}
-  m_Name: Rock
+  m_Name: Key
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2240335660451640227, guid: 0fdb89ac72662fe4885db32d43a16fe0, type: 3}
+  m_Sprite: {fileID: -6361146415846955223, guid: 380ac0a7134b27345805a4c95b6db0ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,5 +34,5 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  maxHitPoints: 2
-  resourceID: Rock
+  maxHitPoints: 9
+  resourceID: Copper

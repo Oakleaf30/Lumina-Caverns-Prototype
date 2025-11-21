@@ -12,6 +12,7 @@ public class RockSpawner : MonoBehaviour
     public TileBase ironTile;
     public TileBase amethystTile;
     public TileBase rubyTile;
+    public TileBase keyTile;
 
     // Define the area where rocks can spawn (e.g., area 0 to 50 on X and Y)
     public Vector2Int spawnAreaMin = new Vector2Int(-8, -4);
@@ -21,6 +22,10 @@ public class RockSpawner : MonoBehaviour
     public int initialRockCount = 10;
 
     public int level = 1;
+
+    private bool keyObtained = false;
+    private bool keySpawned = false;
+    private int keyChance;
 
     // Inside the RockSpawner script:
 
@@ -79,11 +84,25 @@ public class RockSpawner : MonoBehaviour
     {
         int roll = Random.Range(1, 201); // Roll 1 to 100
 
-        int copperChance = 20 + (1 * level);
+        if (!keyObtained && !keySpawned)
+        {
+            float keyRockProbability = GetKeyRockChance(level); // e.g., 0.15 (15%)
+            keyChance = Mathf.RoundToInt(keyRockProbability * 200f);
+        } else
+        {
+            keyChance = 0;
+        }
+
+        int copperChance = keyChance + 20 + (1 * level);
         int ironChance = copperChance + 20 + (2 * (level - 10));
         int gemChance = ironChance + 2;
 
-        if (roll <= copperChance) // 50% chance
+        if (roll <= keyChance)
+        {
+            keySpawned = true;
+            return keyTile;
+        }
+         else if (roll <= copperChance) // 50% chance
         {
             return copperTile;
         }
@@ -119,5 +138,16 @@ public class RockSpawner : MonoBehaviour
         {
             return rubyTile;
         }
+    }
+
+    const float A = 0.00786f;
+    const float B = 1.2721f;
+
+    public float GetKeyRockChance(int currentLevel)
+    {
+        // The probability is capped at 1.0 (100%)
+        float rawChance = A * Mathf.Pow(B, currentLevel);
+
+        return Mathf.Min(rawChance, 1.0f);
     }
 }

@@ -196,9 +196,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTilemap: {fileID: 483565171}
   rockTile: {fileID: 11400000, guid: a2e395a9fd286494da42cc83b8be5d17, type: 2}
+  copperTile: {fileID: 11400000, guid: 4beabab074718634aa91c5cd8e651df9, type: 2}
+  ironTile: {fileID: 11400000, guid: 990fc1cd7e2862444af7b78b45162de8, type: 2}
+  amethystTile: {fileID: 11400000, guid: 525edf6cc4b1ba54785b30b9a8e6b48b, type: 2}
+  rubyTile: {fileID: 11400000, guid: a6714804dc99e7b41bf28ce23605185d, type: 2}
   spawnAreaMin: {x: -7, y: -3}
   spawnAreaMax: {x: 7, y: 3}
   initialRockCount: 30
+  level: 10
 --- !u!4 &337946499
 Transform:
   m_ObjectHideFlags: 0

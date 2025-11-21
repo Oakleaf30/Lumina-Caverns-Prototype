@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Copper_Node_0
+  m_Script: {fileID: 11500000, guid: b8989ff425b03fa439b7f8ba46b35eaf, type: 3}
+  m_Name: Copper
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -431366296966151005, guid: ef75667e4df13874097eef93f385af1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -34,3 +34,5 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
+  maxHitPoints: 2
+  resourceID: Copper

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Amethyst_Node_0
+  m_Script: {fileID: 11500000, guid: b8989ff425b03fa439b7f8ba46b35eaf, type: 3}
+  m_Name: Iron
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -5416414001020972904, guid: b48a295afb8f24146891360fe74c0b17, type: 3}
+  m_Sprite: {fileID: 6573448448760483678, guid: 0d7160d0bed63d142af271e47d184c5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,3 +34,5 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
+  maxHitPoints: 3
+  resourceID: Copper

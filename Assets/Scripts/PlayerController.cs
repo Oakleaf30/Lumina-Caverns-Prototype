@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public Grid grid;
     public Tilemap interactionTilemap;
+
+    private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
     [Header("Interactable Tiles")]
     public TileBase anvilBottomTile;
@@ -80,6 +83,11 @@ public class PlayerController : MonoBehaviour
         Vector3 debugEnd = grid.CellToWorld(targetCell) + new Vector3(0.5f, 0.5f, 0);
         Debug.DrawLine(debugStart, debugEnd, Color.red);
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            MineBlock(targetCell);
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
             CheckInteraction(targetCell);
@@ -91,6 +99,32 @@ public class PlayerController : MonoBehaviour
         Vector2 moveVector = new Vector2(horizontalInput, verticalInput);
         moveVector.Normalize();
         rb.linearVelocity = moveVector * moveSpeed; // changed from linearVelocity (Unity 6) to velocity (Standard)
+    }
+
+    void MineBlock(Vector3Int targetCell)
+    {
+        TileBase targetTile = interactionTilemap.GetTile(targetCell);
+
+        if (targetTile is ResourceTile resource)
+        {
+            // 1. Check if the tile is ALREADY being tracked
+            if (!tileHealthMap.ContainsKey(targetCell))
+            {
+                // If not, initialize its health using the max value from the asset
+                tileHealthMap.Add(targetCell, resource.maxHitPoints);
+            }
+
+            // 2. Reduce the temporary HP stored in the dictionary
+            tileHealthMap[targetCell]--;
+
+            // 3. Check for destruction using the temporary value
+            if (tileHealthMap[targetCell] <= 0)
+            {
+                interactionTilemap.SetTile(targetCell, null);
+                // Crucial: Remove the tile from the dictionary when destroyed
+                tileHealthMap.Remove(targetCell);
+            }
+        }
     }
 
     void CheckInteraction(Vector3Int targetCell)
