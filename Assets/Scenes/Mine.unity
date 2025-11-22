@@ -196,14 +196,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTilemap: {fileID: 483565171}
   rockTile: {fileID: 11400000, guid: a2e395a9fd286494da42cc83b8be5d17, type: 2}
-  copperTile: {fileID: 11400000, guid: 4beabab074718634aa91c5cd8e651df9, type: 2}
-  ironTile: {fileID: 11400000, guid: 990fc1cd7e2862444af7b78b45162de8, type: 2}
-  amethystTile: {fileID: 11400000, guid: 525edf6cc4b1ba54785b30b9a8e6b48b, type: 2}
-  rubyTile: {fileID: 11400000, guid: a6714804dc99e7b41bf28ce23605185d, type: 2}
+  copperTile: {fileID: 11400000, guid: f16cb13edbf603449b892db1aa451652, type: 2}
+  ironTile: {fileID: 11400000, guid: 6af0b294967a58a43bf0282a1ac9b53f, type: 2}
+  amethystTile: {fileID: 11400000, guid: e761a6c762672a2489ac50351595d2d1, type: 2}
+  rubyTile: {fileID: 11400000, guid: 46af9d813b90d144ebcae660f58c5bc8, type: 2}
+  keyTile: {fileID: 11400000, guid: c6fff1938cdde1e4d939962905464d7a, type: 2}
+  ladderTile: {fileID: 11400000, guid: d45580796aa15a24f9fbec2655058867, type: 2}
   spawnAreaMin: {x: -7, y: -3}
   spawnAreaMax: {x: 7, y: 3}
   initialRockCount: 30
-  level: 10
+  level: 0
 --- !u!4 &337946499
 Transform:
   m_ObjectHideFlags: 0
@@ -2718,7 +2720,7 @@ MonoBehaviour:
   anvilBottomTile: {fileID: 0}
   craftingTile: {fileID: 0}
   bookTile: {fileID: 0}
-  ladderTile: {fileID: 0}
+  ladderTile: {fileID: 11400000, guid: d45580796aa15a24f9fbec2655058867, type: 2}
 --- !u!212 &1425637981
 SpriteRenderer:
   m_ObjectHideFlags: 0

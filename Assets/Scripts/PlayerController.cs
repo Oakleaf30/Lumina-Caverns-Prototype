@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public TileBase craftingTile;
     public TileBase bookTile;
     public TileBase ladderTile;
+
+    private int rocksBroken = 0;
 
     void Start()
     {
@@ -120,11 +123,19 @@ public class PlayerController : MonoBehaviour
             // 3. Check for destruction using the temporary value
             if (tileHealthMap[targetCell] <= 0)
             {
-                interactionTilemap.SetTile(targetCell, null);
-                // Crucial: Remove the tile from the dictionary when destroyed
-                tileHealthMap.Remove(targetCell);
+                BlockMined(targetCell);
             }
         }
+    }
+
+    void BlockMined(Vector3Int targetCell)
+    {
+        interactionTilemap.SetTile(targetCell, null);
+        // Crucial: Remove the tile from the dictionary when destroyed
+        tileHealthMap.Remove(targetCell);
+        rocksBroken++;
+
+        RockSpawner.Instance.LadderCheck(targetCell, rocksBroken);
     }
 
     void CheckInteraction(Vector3Int targetCell)
@@ -153,6 +164,8 @@ public class PlayerController : MonoBehaviour
         else if (targetTile == ladderTile)
         {
             Debug.Log("Interacting with Ladder!");
+            string sceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("Mine");
         }
     }
 }

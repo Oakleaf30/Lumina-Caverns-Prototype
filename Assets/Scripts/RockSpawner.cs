@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class RockSpawner : MonoBehaviour
 {
+    public static RockSpawner Instance;
+
     // Assign in Inspector: The Tilemap you are spawning rocks onto (Ore_Layer)
     public Tilemap interactionTilemap;
 
@@ -13,13 +16,14 @@ public class RockSpawner : MonoBehaviour
     public TileBase amethystTile;
     public TileBase rubyTile;
     public TileBase keyTile;
+    public TileBase ladderTile;
 
     // Define the area where rocks can spawn (e.g., area 0 to 50 on X and Y)
     public Vector2Int spawnAreaMin = new Vector2Int(-8, -4);
     public Vector2Int spawnAreaMax = new Vector2Int(8, 4);
 
     // How many rocks to spawn initially
-    public int initialRockCount = 10;
+    public int initialRockCount;
 
     public int level = 1;
 
@@ -27,7 +31,22 @@ public class RockSpawner : MonoBehaviour
     private bool keySpawned = false;
     private int keyChance;
 
+    private bool ladderSpawned = false;
+
     // Inside the RockSpawner script:
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // Prevent duplicates
+        }
+    }
 
     void Start()
     {
@@ -140,14 +159,49 @@ public class RockSpawner : MonoBehaviour
         }
     }
 
-    const float A = 0.00786f;
-    const float B = 1.2721f;
+    const float A = 0.000225f;
+    const float B = 1.4883f;
 
     public float GetKeyRockChance(int currentLevel)
     {
-        // The probability is capped at 1.0 (100%)
         float rawChance = A * Mathf.Pow(B, currentLevel);
-
+        // Even at high levels, the chance is the probability of the single rock spawning
         return Mathf.Min(rawChance, 1.0f);
+    }
+
+    public void LadderCheck(Vector3Int targetCell, int rocksBroken)
+    {
+        if (!ladderSpawned)
+        {
+            int roll = Random.Range(1, 101);
+            int chance = 2 + Mathf.RoundToInt((3.3f) * rocksBroken);
+
+            if (roll <= chance)
+            {
+                interactionTilemap.SetTile(targetCell, ladderTile);
+                ladderSpawned = true;
+            }
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Mine")
+        {
+            interactionTilemap = GameObject.FindGameObjectWithTag("Rocks Grid").GetComponent<Tilemap>();
+            ladderSpawned = false;
+            level++;
+            SpawnRocks(initialRockCount);
+        }
     }
 }
