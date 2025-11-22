@@ -27,7 +27,7 @@ public class RockSpawner : MonoBehaviour
 
     public int level = 1;
 
-    private bool keyObtained = false;
+    public bool keyObtained = false;
     private bool keySpawned = false;
     private int keyChance;
 
@@ -199,9 +199,15 @@ public class RockSpawner : MonoBehaviour
         if (scene.name == "Mine")
         {
             interactionTilemap = GameObject.FindGameObjectWithTag("Rocks Grid").GetComponent<Tilemap>();
+            if (!keyObtained) keySpawned = false;
             ladderSpawned = false;
             level++;
             SpawnRocks(initialRockCount);
+        }
+
+        if (scene.name == "Base")
+        {
+            keyObtained = false;
         }
     }
 }

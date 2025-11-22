@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public Grid grid;
     public Tilemap interactionTilemap;
+    public GameObject canvas;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
@@ -95,6 +96,16 @@ public class PlayerController : MonoBehaviour
         {
             CheckInteraction(targetCell);
         }
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (canvas.activeInHierarchy)
+            {
+                canvas.SetActive(false);
+            } else
+            {
+                canvas.SetActive(true);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -123,12 +134,12 @@ public class PlayerController : MonoBehaviour
             // 3. Check for destruction using the temporary value
             if (tileHealthMap[targetCell] <= 0)
             {
-                BlockMined(targetCell);
+                BlockMined(targetCell, resource);
             }
         }
     }
 
-    void BlockMined(Vector3Int targetCell)
+    void BlockMined(Vector3Int targetCell, ResourceTile targetTile)
     {
         interactionTilemap.SetTile(targetCell, null);
         // Crucial: Remove the tile from the dictionary when destroyed
@@ -136,6 +147,9 @@ public class PlayerController : MonoBehaviour
         rocksBroken++;
 
         RockSpawner.Instance.LadderCheck(targetCell, rocksBroken);
+
+        string type = targetTile.resourceID;
+        Inventory.Instance.AddResource(type);
     }
 
     void CheckInteraction(Vector3Int targetCell)
@@ -163,7 +177,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (targetTile == ladderTile)
         {
-            Debug.Log("Interacting with Ladder!");
             string sceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Mine");
         }
