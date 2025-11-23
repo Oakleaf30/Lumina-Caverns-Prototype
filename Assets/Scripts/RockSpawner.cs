@@ -208,6 +208,7 @@ public class RockSpawner : MonoBehaviour
         if (scene.name == "Base")
         {
             keyObtained = false;
+            level = 0;
         }
     }
 }

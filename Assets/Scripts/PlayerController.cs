@@ -24,9 +24,11 @@ public class PlayerController : MonoBehaviour
     public TileBase anvilBottomTile;
     public TileBase craftingTile;
     public TileBase bookTile;
+    public TileBase chestTile;
     public TileBase ladderTile;
 
     private int rocksBroken = 0;
+    private string CurrentSceneName => SceneManager.GetActiveScene().name;
 
     void Start()
     {
@@ -97,14 +99,13 @@ public class PlayerController : MonoBehaviour
             CheckInteraction(targetCell);
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) {
-            if (canvas.activeInHierarchy)
-            {
-                canvas.SetActive(false);
-            } else
-            {
-                canvas.SetActive(true);
-            }
+        if (Input.GetKeyDown(KeyCode.E) && CurrentSceneName == "Mine") {
+            canvas.SetActive(!canvas.activeInHierarchy);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene("Base");
         }
     }
 
@@ -174,6 +175,10 @@ public class PlayerController : MonoBehaviour
         else if (targetTile == bookTile)
         {
             Debug.Log("Interacting with Book!");
+        }
+        else if (targetTile == chestTile)
+        {
+            canvas.SetActive(!canvas.activeInHierarchy);
         }
         else if (targetTile == ladderTile)
         {

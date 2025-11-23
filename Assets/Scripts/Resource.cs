@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Resource : MonoBehaviour
 {
     private TextMeshProUGUI tmpText;
+    private string CurrentSceneName => SceneManager.GetActiveScene().name;
 
     private void Awake()
     {
@@ -31,7 +33,13 @@ public class Resource : MonoBehaviour
 
         } else
         {
-            tmpText.text = gameObject.name + ": " + Inventory.Instance.GetCurrentAmount(gameObject.name);
+            if (CurrentSceneName == "Base")
+            {
+                tmpText.text = gameObject.name + ": " + Chest.Instance.GetCurrentAmount(gameObject.name);
+            } else
+            {
+                tmpText.text = gameObject.name + ": " + Inventory.Instance.GetCurrentAmount(gameObject.name);
+            }
         }
     }
 }

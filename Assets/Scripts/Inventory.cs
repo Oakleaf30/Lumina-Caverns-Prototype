@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class Inventory : MonoBehaviour
 {
@@ -64,5 +66,36 @@ public class Inventory : MonoBehaviour
             case "Ruby": return ruby;
             default: return 0;
         }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Base")
+        {
+            DepositResources();
+        }
+    }
+
+    private void DepositResources()
+    {
+        Chest.Instance.copper += copper;
+        Chest.Instance.iron += iron;
+        Chest.Instance.amethyst += amethyst;
+        Chest.Instance.ruby += ruby;
+
+        copper = 0;
+        iron = 0;
+        amethyst = 0;
+        ruby = 0;
     }
 }
