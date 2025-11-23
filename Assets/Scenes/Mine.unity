@@ -3104,6 +3104,7 @@ MonoBehaviour:
   durabilityText: {fileID: 1728212743}
   maxDurability: 50
   durability: 50
+  currentPickaxe: 0
 --- !u!4 &743597190
 Transform:
   m_ObjectHideFlags: 0
@@ -3677,14 +3678,13 @@ MonoBehaviour:
   verticalOffset: -0.5
   grid: {fileID: 98932964}
   interactionTilemap: {fileID: 483565171}
-  canvas: {fileID: 478384143}
-  durability: {fileID: 743597189}
+  resourceUI: {fileID: 478384143}
+  forgeUI: {fileID: 0}
   anvilBottomTile: {fileID: 0}
   craftingTile: {fileID: 0}
   bookTile: {fileID: 0}
   chestTile: {fileID: 0}
   ladderTile: {fileID: 11400000, guid: d45580796aa15a24f9fbec2655058867, type: 2}
-  currentPickaxe: 0
 --- !u!212 &1425637981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4155,7 +4155,7 @@ GameObject:
   - component: {fileID: 1728212745}
   m_Layer: 5
   m_Name: Durability Text
-  m_TagString: Untagged
+  m_TagString: DurabilityText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

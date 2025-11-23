@@ -19,9 +19,9 @@ public class Repair : MonoBehaviour
 
     public void RepairPickaxe()
     {
-        if (Durability.Instance.currentPickaxe.ToString() == RepairType)
+        if (Durability.Instance.currentPickaxe.ToString() == RepairType && Chest.Instance.storage[RepairType] >= RepairCost)
         {
-
+            Chest.Instance.storage[RepairType] -= RepairCost;
             Durability.Instance.durability = Durability.Instance.maxDurability;
         }
     }

@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class Durability : MonoBehaviour
 {
@@ -48,5 +50,23 @@ public class Durability : MonoBehaviour
     {
         durability--;
         durabilityText.text = "Pickaxe Durability: " + durability;
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Mine")
+        {
+            durabilityText = GameObject.FindGameObjectWithTag("DurabilityText").GetComponent<TextMeshProUGUI>();
+        }
     }
 }

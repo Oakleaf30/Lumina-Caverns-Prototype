@@ -35,4 +35,4 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   maxHitPoints: 2
-  resourceID: Rock
+  resourceID: Stone

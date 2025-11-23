@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
 
     public Grid grid;
     public Tilemap interactionTilemap;
-    public GameObject canvas;
-    public Durability durability;
+    public GameObject resourceUI;
+    public GameObject forgeUI;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public TileBase ladderTile;
 
     private int rocksBroken = 0;
+
     private string CurrentSceneName => SceneManager.GetActiveScene().name;
 
     void Start()
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E) && CurrentSceneName == "Mine") {
-            canvas.SetActive(!canvas.activeInHierarchy);
+            resourceUI.SetActive(!resourceUI.activeInHierarchy);
         }
 
         if (Input.GetKeyDown(KeyCode.B))
@@ -153,7 +154,7 @@ public class PlayerController : MonoBehaviour
         string type = targetTile.resourceID;
         Inventory.Instance.AddResource(type);
 
-        durability.DamagePickaxe();
+        Durability.Instance.DamagePickaxe();
     }
 
     void CheckInteraction(Vector3Int targetCell)
@@ -169,7 +170,7 @@ public class PlayerController : MonoBehaviour
 
         if (targetTile == anvilBottomTile)
         {
-            Debug.Log("Interacting with Anvil!");
+            forgeUI.SetActive(!forgeUI.activeInHierarchy);
         }
         else if (targetTile == craftingTile)
         {
@@ -181,7 +182,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (targetTile == chestTile)
         {
-            canvas.SetActive(!canvas.activeInHierarchy);
+            resourceUI.SetActive(!resourceUI.activeInHierarchy);
         }
         else if (targetTile == ladderTile)
         {
