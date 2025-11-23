@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -6,10 +7,21 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
+    public int stone = 0;
     public int copper = 0;
     public int iron = 0;
     public int amethyst = 0;
     public int ruby = 0;
+
+    // Use Dictionary to store all resources
+    public Dictionary<string, int> resources = new Dictionary<string, int>()
+    {
+        {"Stone", 0},
+        {"Copper", 0},
+        {"Iron", 0},
+        {"Amethyst", 0},
+        {"Ruby", 0}
+    };
 
     void Awake()
     {
@@ -38,34 +50,7 @@ public class Inventory : MonoBehaviour
 
     public void AddResource(string type, int amount = 1)
     {
-        // Use a switch statement to check the type string
-        switch (type)
-        {
-            case "Copper":
-                copper += amount;
-                break;
-            case "Iron":
-                iron += amount;
-                break;
-            case "Amethyst":
-                amethyst += amount;
-                break;
-            case "Ruby":
-                ruby += amount;
-                break;
-        }
-    }
-
-    public int GetCurrentAmount(string type)
-    {
-        switch (type)
-        {
-            case "Copper": return copper;
-            case "Iron": return iron;
-            case "Amethyst": return amethyst;
-            case "Ruby": return ruby;
-            default: return 0;
-        }
+        resources[type] += amount;
     }
 
     void OnEnable()
@@ -88,14 +73,16 @@ public class Inventory : MonoBehaviour
 
     private void DepositResources()
     {
-        Chest.Instance.copper += copper;
-        Chest.Instance.iron += iron;
-        Chest.Instance.amethyst += amethyst;
-        Chest.Instance.ruby += ruby;
+        // 1. Deposit resources from inventory dictionary to Chest dictionary
+        foreach (KeyValuePair<string, int> item in resources)
+        {
+            Chest.Instance.AddResource(item.Key, item.Value);
+        }
 
-        copper = 0;
-        iron = 0;
-        amethyst = 0;
-        ruby = 0;
+        var keys = new List<string>(resources.Keys);
+        foreach (string key in keys)
+        {
+            resources[key] = 0;
+        }
     }
 }

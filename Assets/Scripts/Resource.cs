@@ -35,10 +35,10 @@ public class Resource : MonoBehaviour
         {
             if (CurrentSceneName == "Base")
             {
-                tmpText.text = gameObject.name + ": " + Chest.Instance.GetCurrentAmount(gameObject.name);
+                tmpText.text = gameObject.name + ": " + Chest.Instance.storage[gameObject.name];
             } else
             {
-                tmpText.text = gameObject.name + ": " + Inventory.Instance.GetCurrentAmount(gameObject.name);
+                tmpText.text = gameObject.name + ": " + Inventory.Instance.resources[gameObject.name];
             }
         }
     }

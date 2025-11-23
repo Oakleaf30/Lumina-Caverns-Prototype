@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public Grid grid;
     public Tilemap interactionTilemap;
     public GameObject canvas;
+    public Durability durability;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
@@ -151,6 +152,8 @@ public class PlayerController : MonoBehaviour
 
         string type = targetTile.resourceID;
         Inventory.Instance.AddResource(type);
+
+        durability.DamagePickaxe();
     }
 
     void CheckInteraction(Vector3Int targetCell)

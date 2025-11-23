@@ -1,19 +1,23 @@
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
+using TMPro;
 using UnityEngine;
 
-public class Chest : MonoBehaviour
+public class Durability : MonoBehaviour
 {
-    public static Chest Instance;
+    public static Durability Instance;
 
-    public Dictionary<string, int> storage = new Dictionary<string, int>()
+    public TextMeshProUGUI durabilityText;
+
+    public int maxDurability;
+    public int durability;
+
+    public enum Pickaxe
     {
-        {"Stone", 0},
-        {"Copper", 0},
-        {"Iron", 0},
-        {"Amethyst", 0},
-        {"Ruby", 0}
-    };
+        Stone,
+        Copper,
+        Iron
+    }
+
+    public Pickaxe currentPickaxe = Pickaxe.Stone;
 
     void Awake()
     {
@@ -40,8 +44,9 @@ public class Chest : MonoBehaviour
         
     }
 
-    public void AddResource(string type, int amount)
+    public void DamagePickaxe()
     {
-        storage[type] += amount;
+        durability--;
+        durabilityText.text = "Pickaxe Durability: " + durability;
     }
 }
