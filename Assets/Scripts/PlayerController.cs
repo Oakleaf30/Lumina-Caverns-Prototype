@@ -13,13 +13,15 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
 
     private Rigidbody2D rb;
-    private Vector2 lastDirection = Vector2.down; // 1. Initialize with a default so you can interact at start
+    private Vector2 lastDirection = Vector2.right; // 1. Initialize with a default so you can interact at start
 
     public Grid grid;
     public Tilemap interactionTilemap;
     public GameObject resourceUI;
     public GameObject craftingUI;
     public GameObject forgeUI;
+
+    public PlayerAttack attack;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
@@ -93,9 +95,9 @@ public class PlayerController : MonoBehaviour
         Vector3 debugEnd = grid.CellToWorld(targetCell) + new Vector3(0.5f, 0.5f, 0);
         Debug.DrawLine(debugStart, debugEnd, Color.red);
 
-        if (Input.GetMouseButtonDown(0) && Durability.Instance.durability > 0)
+        if (Input.GetMouseButtonDown(0) && CurrentSceneName == "Mine")
         {
-            MineBlock(targetCell);
+            if (Durability.Instance.durability > 0) MineBlock(targetCell);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -105,6 +107,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && CurrentSceneName == "Mine") {
             resourceUI.SetActive(!resourceUI.activeInHierarchy);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            attack.Attack(lastDirection);
         }
 
         if (Input.GetKeyDown(KeyCode.B))
