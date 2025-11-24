@@ -3102,7 +3102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durabilityText: {fileID: 1728212743}
-  maxDurability: 50
+  maxDurability: 30
   durability: 50
   currentPickaxe: 0
 --- !u!4 &743597190
@@ -3832,7 +3832,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 4
+  m_PointLightOuterRadius: 5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -4290,7 +4290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57756706637749c429b0e9981f939e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: {fileID: 743597189}
 --- !u!1 &1862821004
 GameObject:
   m_ObjectHideFlags: 0

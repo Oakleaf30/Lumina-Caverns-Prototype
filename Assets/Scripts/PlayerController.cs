@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float verticalOffset = -0.5f;
+    public int pickaxeDamage => Durability.Instance.pickaxeDamage;
 
     private float horizontalInput;
     private float verticalInput;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public Grid grid;
     public Tilemap interactionTilemap;
     public GameObject resourceUI;
+    public GameObject craftingUI;
     public GameObject forgeUI;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour
         Vector3 debugEnd = grid.CellToWorld(targetCell) + new Vector3(0.5f, 0.5f, 0);
         Debug.DrawLine(debugStart, debugEnd, Color.red);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Durability.Instance.durability > 0)
         {
             MineBlock(targetCell);
         }
@@ -132,7 +134,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // 2. Reduce the temporary HP stored in the dictionary
-            tileHealthMap[targetCell]--;
+            tileHealthMap[targetCell] -= pickaxeDamage;
 
             // 3. Check for destruction using the temporary value
             if (tileHealthMap[targetCell] <= 0)
@@ -174,7 +176,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (targetTile == craftingTile)
         {
-            Debug.Log("Interacting with Crafting Table!");
+            craftingUI.SetActive(!craftingUI.activeInHierarchy);
         }
         else if (targetTile == bookTile)
         {

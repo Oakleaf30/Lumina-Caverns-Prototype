@@ -8,7 +8,7 @@ public class Chest : MonoBehaviour
     public Dictionary<string, int> storage = new Dictionary<string, int>()
     {
         {"Stone", 0},
-        {"Copper", 0},
+        {"Copper", 30},
         {"Iron", 0},
         {"Amethyst", 0},
         {"Ruby", 0}

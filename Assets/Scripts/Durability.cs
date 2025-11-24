@@ -20,6 +20,7 @@ public class Durability : MonoBehaviour
     }
 
     public Pickaxe currentPickaxe = Pickaxe.Stone;
+    public int pickaxeDamage = 1;
 
     void Awake()
     {
@@ -37,7 +38,7 @@ public class Durability : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        durability = maxDurability;
     }
 
     // Update is called once per frame
