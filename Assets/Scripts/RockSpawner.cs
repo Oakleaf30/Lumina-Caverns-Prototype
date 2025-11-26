@@ -127,7 +127,7 @@ public class RockSpawner : MonoBehaviour
         }
         else if (roll <= ironChance) // 30% chance (51-80)
         {
-            if (level >= 10)
+            if (level > 10)
             {
                 return ironTile;
             } else return rockTile;

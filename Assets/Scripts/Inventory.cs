@@ -85,4 +85,11 @@ public class Inventory : MonoBehaviour
             resources[key] = 0;
         }
     }
+
+    public void ResourcesLost()
+    {
+        resources["Stone"] = 0;
+        resources["Copper"] = 0;
+        resources["Iron"] = 0;
+    }
 }

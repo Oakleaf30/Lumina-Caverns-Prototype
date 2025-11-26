@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-         
+        swordHitbox.transform.position = transform.position;
     }
 
     public void Attack(Vector2 direction)
@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
 
         // --- 1. Preparation ---
         // Ensure the hitbox is in its starting rotation before swinging
-        swordHitbox.transform.position = transform.position;
+        
         swordHitbox.transform.localRotation = Quaternion.Euler(0, 0, startAngle);
         swordHitbox.SetActive(true);
 

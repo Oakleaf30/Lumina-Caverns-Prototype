@@ -2,9 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    public int maxHealth = 100;
+    public int currentHealth = 100;
     public float moveSpeed = 5f;
     public float verticalOffset = -0.5f;
     public int pickaxeDamage => Durability.Instance.pickaxeDamage;
@@ -13,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
     private Vector2 lastDirection = Vector2.right; // 1. Initialize with a default so you can interact at start
 
     public Grid grid;
@@ -22,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public GameObject forgeUI;
 
     public PlayerAttack attack;
+    public HealthDisplay healthDisplay;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
@@ -33,12 +38,15 @@ public class PlayerController : MonoBehaviour
     public TileBase ladderTile;
 
     private int rocksBroken = 0;
+    public bool invincible = false;
 
     private string CurrentSceneName => SceneManager.GetActiveScene().name;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -196,6 +204,32 @@ public class PlayerController : MonoBehaviour
         {
             string sceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Mine");
+        }
+    }
+
+    IEnumerator Invincible()
+    {
+        invincible = true;
+        for (int i = 0; i < 3; i++)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+        }
+        invincible = false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        StartCoroutine(Invincible());
+        currentHealth -= damage;
+        healthDisplay.UpdateDisplay();
+
+        if (currentHealth <= 0)
+        {
+            Inventory.Instance.ResourcesLost();
+            SceneManager.LoadScene("Base");
         }
     }
 }
