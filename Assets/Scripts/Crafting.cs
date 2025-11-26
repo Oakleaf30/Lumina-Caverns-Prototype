@@ -5,11 +5,16 @@ public class Crafting : MonoBehaviour
 {
     public string UpgradeType;
     public int UpgradeCost;
+    public string UpgradeName;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Button button = GetComponent<Button>();
+        if (Inventory.Instance.upgradeDic[UpgradeName])
+        {
+            button.interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -18,16 +23,35 @@ public class Crafting : MonoBehaviour
         
     }
 
+    void UpgradeBought()
+    {
+        Button button = GetComponent<Button>();
+        Chest.Instance.storage[UpgradeType] -= UpgradeCost;
+        button.interactable = false;
+        Inventory.Instance.upgradeDic[UpgradeName] = true;
+    }
+
     public void PickaxeUpgrade()
     {
         if (Chest.Instance.storage[UpgradeType] >= UpgradeCost)
         {
-            Chest.Instance.storage[UpgradeType] -= UpgradeCost;
+            UpgradeBought();
             Durability.Instance.pickaxeDamage++;
             Durability.Instance.maxDurability += 30;
             Durability.Instance.durability = Durability.Instance.maxDurability;
-            Button button = GetComponent<Button>();
-            button.interactable = false;
         }
+    }
+
+    public void WeaponUpgrade()
+    {
+        UpgradeBought();
+        PlayerHealth.Instance.attackDamage += 5;
+    }
+
+    public void ArmourUpgrade()
+    {
+        UpgradeBought();
+        PlayerHealth.Instance.maxHealth += 25;
+        PlayerHealth.Instance.currentHealth = PlayerHealth.Instance.maxHealth;
     }
 }

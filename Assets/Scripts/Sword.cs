@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    public int attackDamage = 5;
+    public int attackDamage => PlayerHealth.Instance.attackDamage;
     public float kbForce = 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

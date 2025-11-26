@@ -7,6 +7,7 @@ TagManager:
   - Rocks Grid
   - DurabilityText
   - Enemy
+  - HealthText
   layers:
   - Default
   - TransparentFX

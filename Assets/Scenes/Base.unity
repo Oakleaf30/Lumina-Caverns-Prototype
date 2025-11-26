@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 248197029}
   - component: {fileID: 248197028}
   - component: {fileID: 248197027}
+  - component: {fileID: 248197030}
   m_Layer: 5
   m_Name: Copper Armour
   m_TagString: Untagged
@@ -852,7 +853,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 248197028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 248197030}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: ArmourUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &248197028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,6 +904,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248197025}
   m_CullTransparentMesh: 1
+--- !u!114 &248197030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248197025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7a4057e9eae754780d28e061bd395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeType: Copper
+  UpgradeCost: 30
+  UpgradeName: Copper Armour
 --- !u!1 &335956247
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +931,7 @@ GameObject:
   - component: {fileID: 335956251}
   - component: {fileID: 335956250}
   - component: {fileID: 335956249}
+  - component: {fileID: 335956252}
   m_Layer: 5
   m_Name: Copper Sword
   m_TagString: Untagged
@@ -973,7 +1002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 335956250}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 335956252}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: WeaponUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &335956250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,6 +1053,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335956247}
   m_CullTransparentMesh: 1
+--- !u!114 &335956252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335956247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7a4057e9eae754780d28e061bd395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeType: Copper
+  UpgradeCost: 30
+  UpgradeName: Copper Sword
 --- !u!1 &370933301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4501,6 +4557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpgradeType: Copper
   UpgradeCost: 30
+  UpgradeName: Copper Pickaxe
 --- !u!1 &877437581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,6 +4706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpgradeType: Iron
   UpgradeCost: 30
+  UpgradeName: Iron Pickaxe
 --- !u!1 &934848884
 GameObject:
   m_ObjectHideFlags: 0
@@ -4986,6 +5044,7 @@ GameObject:
   - component: {fileID: 1051036471}
   - component: {fileID: 1051036470}
   - component: {fileID: 1051036469}
+  - component: {fileID: 1051036472}
   m_Layer: 5
   m_Name: Iron Armour
   m_TagString: Untagged
@@ -5056,7 +5115,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1051036470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1051036472}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: ArmourUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1051036470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5095,6 +5166,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051036467}
   m_CullTransparentMesh: 1
+--- !u!114 &1051036472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051036467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7a4057e9eae754780d28e061bd395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeType: Iron
+  UpgradeCost: 30
+  UpgradeName: Iron Armour
 --- !u!1 &1094930269
 GameObject:
   m_ObjectHideFlags: 0
@@ -6395,11 +6481,14 @@ MonoBehaviour:
   resourceUI: {fileID: 998819890}
   craftingUI: {fileID: 1244951318}
   forgeUI: {fileID: 987506261}
+  attack: {fileID: 0}
+  healthDisplay: {fileID: 0}
   anvilBottomTile: {fileID: 11400000, guid: f8941f69074643a40a15793ba68c3ce9, type: 2}
   craftingTile: {fileID: 11400000, guid: eaba7e4ddab22f747b116aee65255e48, type: 2}
   bookTile: {fileID: 11400000, guid: 473f5153966b84b4899e6f1f6a0601c1, type: 2}
   chestTile: {fileID: 11400000, guid: 711a8493fd6ad044c8c062bfdc4aa22e, type: 2}
   ladderTile: {fileID: 11400000, guid: d45580796aa15a24f9fbec2655058867, type: 2}
+  invincible: 0
 --- !u!212 &1425637981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7219,6 +7308,7 @@ GameObject:
   - component: {fileID: 1907924081}
   - component: {fileID: 1907924080}
   - component: {fileID: 1907924079}
+  - component: {fileID: 1907924082}
   m_Layer: 5
   m_Name: Iron Sword
   m_TagString: Untagged
@@ -7289,7 +7379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1907924080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1907924082}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: WeaponUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1907924080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7328,6 +7430,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907924077}
   m_CullTransparentMesh: 1
+--- !u!114 &1907924082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907924077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7a4057e9eae754780d28e061bd395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeType: Iron
+  UpgradeCost: 30
+  UpgradeName: Iron Sword
 --- !u!1 &2012369517
 GameObject:
   m_ObjectHideFlags: 0

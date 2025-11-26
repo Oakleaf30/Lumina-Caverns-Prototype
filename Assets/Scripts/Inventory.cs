@@ -7,20 +7,33 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
-    public int stone = 0;
-    public int copper = 0;
-    public int iron = 0;
-    public int amethyst = 0;
-    public int ruby = 0;
-
     // Use Dictionary to store all resources
     public Dictionary<string, int> resources = new Dictionary<string, int>()
     {
         {"Stone", 0},
-        {"Copper", 0},
-        {"Iron", 0},
+        {"Copper", 90},
+        {"Iron", 90},
         {"Amethyst", 0},
         {"Ruby", 0}
+    };
+
+    [System.Serializable]
+    public class UpgradeEntry
+    {
+        public string name;
+        public bool unlocked;
+    }
+
+    public Dictionary<string, bool> upgradeDic;
+
+    public List<UpgradeEntry> upgrades = new List<UpgradeEntry>()
+    {
+        new UpgradeEntry { name = "Copper Pickaxe", unlocked = false },
+        new UpgradeEntry { name = "Iron Pickaxe", unlocked = false },
+        new UpgradeEntry { name = "Copper Sword", unlocked = false },
+        new UpgradeEntry { name = "Iron Sword", unlocked = false },
+        new UpgradeEntry { name = "Copper Armour", unlocked = false },
+        new UpgradeEntry { name = "Iron Armour", unlocked = false },
     };
 
     void Awake()
@@ -29,6 +42,12 @@ public class Inventory : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            upgradeDic = new Dictionary<string, bool>();
+            foreach (var entry in upgrades)
+            {
+                upgradeDic[entry.name] = entry.unlocked;
+            }
         }
         else
         {
@@ -91,5 +110,13 @@ public class Inventory : MonoBehaviour
         resources["Stone"] = 0;
         resources["Copper"] = 0;
         resources["Iron"] = 0;
+    }
+
+    public void UpdateUpgrades()
+    {
+        foreach (var entry in upgrades)
+        {
+            upgradeDic[entry.name] = entry.unlocked;
+        }
     }
 }

@@ -6,8 +6,6 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth = 100;
     public float moveSpeed = 5f;
     public float verticalOffset = -0.5f;
     public int pickaxeDamage => Durability.Instance.pickaxeDamage;
@@ -46,7 +44,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = maxHealth;
     }
 
     void Update()
@@ -223,10 +220,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         StartCoroutine(Invincible());
-        currentHealth -= damage;
+        PlayerHealth.Instance.currentHealth -= damage;
         healthDisplay.UpdateDisplay();
 
-        if (currentHealth <= 0)
+        if (PlayerHealth.Instance.currentHealth <= 0)
         {
             Inventory.Instance.ResourcesLost();
             SceneManager.LoadScene("Base");

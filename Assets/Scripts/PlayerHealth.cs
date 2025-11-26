@@ -1,25 +1,16 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Durability : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    public static Durability Instance;
+    public static PlayerHealth Instance;
 
-    private TextMeshProUGUI durabilityText;
+    public int maxHealth = 100;
+    public int currentHealth = 100;
 
-    public int maxDurability;
-    public int durability;
+    public int attackDamage = 5;
 
-    public enum Pickaxe
-    {
-        Stone,
-        Copper,
-        Iron
-    }
-
-    public Pickaxe currentPickaxe = Pickaxe.Stone;
-    public int pickaxeDamage = 1;
+    private HealthDisplay healthDisplay;
 
     void Awake()
     {
@@ -37,19 +28,13 @@ public class Durability : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        durability = maxDurability;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    public void DamagePickaxe()
-    {
-        durability--;
-        durabilityText.text = "Pickaxe Durability: " + durability;
     }
 
     void OnEnable()
@@ -66,7 +51,13 @@ public class Durability : MonoBehaviour
     {
         if (scene.name == "Mine")
         {
-            durabilityText = GameObject.FindGameObjectWithTag("DurabilityText").GetComponent<TextMeshProUGUI>();
+            healthDisplay = GameObject.FindGameObjectWithTag("HealthText").GetComponent<HealthDisplay>();
+            healthDisplay.UpdateDisplay();
+        }
+
+        if (scene.name == "Base")
+        {
+            currentHealth = maxHealth;
         }
     }
 }

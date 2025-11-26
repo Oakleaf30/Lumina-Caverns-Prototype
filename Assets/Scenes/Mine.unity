@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 150811462}
   m_Layer: 5
   m_Name: Health Display
-  m_TagString: Untagged
+  m_TagString: HealthText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1049,7 +1049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7205d8fc0cf7a4eb93cb5a4e814ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
   kbForce: 10
 --- !u!1 &574447761
 GameObject:
@@ -3392,7 +3391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a3e17c3ff904e47ac83ac70789f595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durabilityText: {fileID: 1728212743}
   maxDurability: 30
   durability: 50
   currentPickaxe: 0
@@ -3685,8 +3683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stone: 0
-  copper: 0
-  iron: 0
+  copper: 90
+  iron: 90
   amethyst: 0
   ruby: 0
 --- !u!1 &1215922468
@@ -3967,8 +3965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53627fc85aa19da48816ba8594d4a984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
   moveSpeed: 5
   verticalOffset: -0.5
   grid: {fileID: 98932964}
@@ -4305,6 +4301,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b173e42b46bc152458dab8e3e7d9fc0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1508107148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508107150}
+  - component: {fileID: 1508107149}
+  m_Layer: 0
+  m_Name: Health Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1508107149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508107148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511a07f4cdc99c849886a672e6578fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  attackDamage: 5
+--- !u!4 &1508107150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508107148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 522.44135, y: 599.78156, z: -3.1968026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727984327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4634,7 +4677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slime: {fileID: 225961205171248080, guid: 3eed8bf7a0fc9124781749024d19d1c7, type: 3}
   bat: {fileID: 0}
-  enemyCount: 4
+  enemyCount: 2
 --- !u!4 &1748815649
 Transform:
   m_ObjectHideFlags: 0
@@ -4964,3 +5007,4 @@ SceneRoots:
   - {fileID: 743597190}
   - {fileID: 554197030}
   - {fileID: 1748815649}
+  - {fileID: 1508107150}
