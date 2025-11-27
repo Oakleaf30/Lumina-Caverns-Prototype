@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7205d8fc0cf7a4eb93cb5a4e814ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kbForce: 10
+  kbForce: 5
 --- !u!1 &574447761
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,55 +3638,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1182586434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1182586435}
-  - component: {fileID: 1182586436}
-  m_Layer: 0
-  m_Name: Inventory Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1182586435
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182586434}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1182586436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182586434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a0383724c80c80428896a69cb79e043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stone: 0
-  copper: 90
-  iron: 90
-  amethyst: 0
-  ruby: 0
 --- !u!1 &1215922468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,7 +4102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordHitbox: {fileID: 554197027}
-  swingDuration: 0.2
+  swingDuration: 0.3
 --- !u!1 &1501575193
 GameObject:
   m_ObjectHideFlags: 0
@@ -5001,7 +4952,6 @@ SceneRoots:
   - {fileID: 1425637982}
   - {fileID: 337946499}
   - {fileID: 1088098345}
-  - {fileID: 1182586435}
   - {fileID: 478384147}
   - {fileID: 574447765}
   - {fileID: 743597190}

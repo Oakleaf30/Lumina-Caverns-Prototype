@@ -13,8 +13,8 @@ public class Inventory : MonoBehaviour
         {"Stone", 0},
         {"Copper", 90},
         {"Iron", 90},
-        {"Amethyst", 0},
-        {"Ruby", 0}
+        {"Amethyst", 1},
+        {"Ruby", 1}
     };
 
     [System.Serializable]

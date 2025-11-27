@@ -44,14 +44,20 @@ public class Crafting : MonoBehaviour
 
     public void WeaponUpgrade()
     {
-        UpgradeBought();
-        PlayerHealth.Instance.attackDamage += 5;
+        if (Chest.Instance.storage[UpgradeType] >= UpgradeCost)
+        {
+            UpgradeBought();
+            PlayerHealth.Instance.attackDamage += 5; 
+        }
     }
 
     public void ArmourUpgrade()
     {
-        UpgradeBought();
-        PlayerHealth.Instance.maxHealth += 25;
-        PlayerHealth.Instance.currentHealth = PlayerHealth.Instance.maxHealth;
+        if (Chest.Instance.storage[UpgradeType] >= UpgradeCost)
+        {
+            UpgradeBought();
+            PlayerHealth.Instance.maxHealth += 25;
+            PlayerHealth.Instance.currentHealth = PlayerHealth.Instance.maxHealth; 
+        }
     }
 }

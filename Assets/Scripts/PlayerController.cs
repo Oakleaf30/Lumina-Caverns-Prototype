@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Vector2 lastDirection = Vector2.right; // 1. Initialize with a default so you can interact at start
+    private Light2D light2d;
 
     public Grid grid;
     public Tilemap interactionTilemap;
@@ -40,9 +42,23 @@ public class PlayerController : MonoBehaviour
 
     private string CurrentSceneName => SceneManager.GetActiveScene().name;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        light2d = GetComponent<Light2D>();
+
+        // 2. ONLY proceed if the light2d component was actually found (is not null).
+        if (light2d != null)
+        {
+            // Now it's safe to access its properties without crashing.
+            light2d.pointLightOuterRadius = EnchantManager.Instance.lightStrength;
+        }
+        moveSpeed = EnchantManager.Instance.moveSpeed;
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

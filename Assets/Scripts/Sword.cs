@@ -8,7 +8,7 @@ public class Sword : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        kbForce = EnchantManager.Instance.kb;
     }
 
     // Update is called once per frame
