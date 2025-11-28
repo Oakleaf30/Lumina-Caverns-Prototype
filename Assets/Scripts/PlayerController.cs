@@ -181,9 +181,23 @@ public class PlayerController : MonoBehaviour
         RockSpawner.Instance.LadderCheck(targetCell, rocksBroken);
 
         string type = targetTile.resourceID;
-        Inventory.Instance.AddResource(type);
+        int amount = RollBonusOre();
+        Inventory.Instance.AddResource(type, amount);
 
         Durability.Instance.DamagePickaxe();
+    }
+
+    int RollBonusOre()
+    {
+        if (EnchantManager.Instance.enchantDic["Ores"])
+        {
+            int bonus = Random.Range(1, 3);
+            return bonus;
+        }
+        else
+        {
+            return 1;
+        }
     }
 
     void CheckInteraction(Vector3Int targetCell)

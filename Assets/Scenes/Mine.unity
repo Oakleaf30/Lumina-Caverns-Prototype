@@ -1050,6 +1050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kbForce: 5
+  healthDisplay: {fileID: 150811462}
 --- !u!1 &574447761
 GameObject:
   m_ObjectHideFlags: 0

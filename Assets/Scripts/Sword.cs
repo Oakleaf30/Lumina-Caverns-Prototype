@@ -5,6 +5,8 @@ public class Sword : MonoBehaviour
     public int attackDamage => PlayerHealth.Instance.attackDamage;
     public float kbForce = 5;
 
+    public HealthDisplay healthDisplay;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,6 +37,12 @@ public class Sword : MonoBehaviour
 
                 // 3. Apply the force
                 enemyRb.AddForce(knockbackDirection * kbForce, ForceMode2D.Impulse);
+
+                if (PlayerHealth.Instance.currentHealth < PlayerHealth.Instance.maxHealth && EnchantManager.Instance.enchantDic["Vampirism"])
+                {
+                    PlayerHealth.Instance.currentHealth++;
+                    healthDisplay.UpdateDisplay();
+                }
             }
         }
     }
