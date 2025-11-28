@@ -174,6 +174,7 @@ public class RockSpawner : MonoBehaviour
         if (!ladderSpawned)
         {
             int bonus = EnchantManager.Instance.enchantDic["Ladder"] ? 4 : 0;
+            if (keyObtained) bonus += 2;
             int roll = Random.Range(1, 101);
             int chance = 2 + bonus + Mathf.RoundToInt((3.3f) * rocksBroken);
 

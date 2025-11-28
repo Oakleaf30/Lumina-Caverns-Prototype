@@ -11,10 +11,10 @@ public class Inventory : MonoBehaviour
     public Dictionary<string, int> resources = new Dictionary<string, int>()
     {
         {"Stone", 0},
-        {"Copper", 90},
-        {"Iron", 90},
-        {"Amethyst", 1},
-        {"Ruby", 1}
+        {"Copper", 0},
+        {"Iron", 0},
+        {"Amethyst", 0},
+        {"Ruby", 0}
     };
 
     [System.Serializable]

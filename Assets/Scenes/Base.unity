@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RepairType: Iron
-  RepairCost: 0
+  RepairCost: 10
 --- !u!1 &41310726
 GameObject:
   m_ObjectHideFlags: 0
@@ -7496,7 +7496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RepairType: Copper
-  RepairCost: 0
+  RepairCost: 10
 --- !u!1 &1327897759
 GameObject:
   m_ObjectHideFlags: 0

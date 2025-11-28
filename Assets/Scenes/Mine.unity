@@ -491,7 +491,7 @@ MonoBehaviour:
   spawnAreaMin: {x: -7, y: -3}
   spawnAreaMax: {x: 7, y: 3}
   initialRockCount: 30
-  level: 0
+  level: 10
   keyObtained: 0
 --- !u!4 &337946499
 Transform:
@@ -3392,8 +3392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a3e17c3ff904e47ac83ac70789f595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 30
-  durability: 50
+  maxDurability: 60
+  durability: 60
   currentPickaxe: 0
   pickaxeDamage: 1
 --- !u!4 &743597190
@@ -4628,7 +4628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slime: {fileID: 225961205171248080, guid: 3eed8bf7a0fc9124781749024d19d1c7, type: 3}
-  bat: {fileID: 0}
+  bat: {fileID: 4012750418251671315, guid: b2c8ff4f1ec631f48afbd7230a77aca8, type: 3}
   enemyCount: 2
 --- !u!4 &1748815649
 Transform:
@@ -4947,15 +4947,15 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1088098345}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 98932965}
   - {fileID: 1425637982}
-  - {fileID: 337946499}
-  - {fileID: 1088098345}
+  - {fileID: 554197030}
   - {fileID: 478384147}
   - {fileID: 574447765}
+  - {fileID: 337946499}
   - {fileID: 743597190}
-  - {fileID: 554197030}
   - {fileID: 1748815649}
   - {fileID: 1508107150}

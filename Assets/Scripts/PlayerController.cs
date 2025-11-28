@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
 
             // 2. Reduce the temporary HP stored in the dictionary
             tileHealthMap[targetCell] -= pickaxeDamage;
+            Durability.Instance.DamagePickaxe();
 
             // 3. Check for destruction using the temporary value
             if (tileHealthMap[targetCell] <= 0)
@@ -183,8 +184,6 @@ public class PlayerController : MonoBehaviour
         string type = targetTile.resourceID;
         int amount = RollBonusOre();
         Inventory.Instance.AddResource(type, amount);
-
-        Durability.Instance.DamagePickaxe();
     }
 
     int RollBonusOre()

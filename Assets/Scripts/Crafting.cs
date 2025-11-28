@@ -37,7 +37,7 @@ public class Crafting : MonoBehaviour
         {
             UpgradeBought();
             Durability.Instance.pickaxeDamage++;
-            Durability.Instance.maxDurability += 30;
+            Durability.Instance.maxDurability += 60;
             Durability.Instance.durability = Durability.Instance.maxDurability;
         }
     }
