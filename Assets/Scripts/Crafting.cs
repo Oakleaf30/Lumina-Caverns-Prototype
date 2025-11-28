@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +40,12 @@ public class Crafting : MonoBehaviour
             Durability.Instance.pickaxeDamage++;
             Durability.Instance.maxDurability += 60;
             Durability.Instance.durability = Durability.Instance.maxDurability;
+            Durability.Pickaxe newType = (Durability.Pickaxe)Enum.Parse(
+            typeof(Durability.Pickaxe),
+            UpgradeType,
+            true // Ignore case
+        );
+            Durability.Instance.currentPickaxe = newType;
         }
     }
 

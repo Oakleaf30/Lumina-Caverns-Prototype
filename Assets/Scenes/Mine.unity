@@ -491,7 +491,7 @@ MonoBehaviour:
   spawnAreaMin: {x: -7, y: -3}
   spawnAreaMax: {x: 7, y: 3}
   initialRockCount: 30
-  level: 10
+  level: 15
   keyObtained: 0
 --- !u!4 &337946499
 Transform:

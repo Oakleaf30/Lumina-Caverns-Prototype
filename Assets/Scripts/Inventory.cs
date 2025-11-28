@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public Dictionary<string, int> resources = new Dictionary<string, int>()
     {
         {"Stone", 0},
-        {"Copper", 0},
+        {"Copper", 30},
         {"Iron", 0},
         {"Amethyst", 0},
         {"Ruby", 0}
@@ -69,7 +69,13 @@ public class Inventory : MonoBehaviour
 
     public void AddResource(string type, int amount = 1)
     {
-        resources[type] += amount;
+        if (type == "Key")
+        {
+            RockSpawner.Instance.keyObtained = true;
+        } else
+        {
+            resources[type] += amount;
+        }
     }
 
     void OnEnable()
