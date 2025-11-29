@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public Grid grid;
     public Tilemap interactionTilemap;
+    public GameObject tutorialUI;
     public GameObject resourceUI;
     public GameObject craftingUI;
     public GameObject forgeUI;
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (targetTile == bookTile)
         {
-            Debug.Log("Interacting with Book!");
+            tutorialUI.SetActive(!tutorialUI.activeInHierarchy);
         }
         else if (targetTile == chestTile)
         {
@@ -266,6 +267,7 @@ public class PlayerController : MonoBehaviour
         {
             Inventory.Instance.ResourcesLost();
             SceneManager.LoadScene("Base");
+            Durability.Instance.durability = Durability.Instance.maxDurability;
         }
     }
 }

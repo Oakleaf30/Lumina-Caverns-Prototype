@@ -65,7 +65,7 @@ public class RockSpawner : MonoBehaviour
             TileBase tile = SelectTile();
 
             // Check if the cell is currently empty
-            if (CanSpawnAt(randomCell))
+            if (CanSpawnAt(randomCell) && randomCell != Vector3Int.zero)
             {
                 // Place the rock tile
                 interactionTilemap.SetTile(randomCell, tile);
