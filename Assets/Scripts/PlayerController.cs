@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerAttack attack;
     public HealthDisplay healthDisplay;
+    public GameObject gateWarning;
 
     private Dictionary<Vector3Int, int> tileHealthMap = new Dictionary<Vector3Int, int>();
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public TileBase bookTile;
     public TileBase chestTile;
     public TileBase ladderTile;
+    public TileBase gateTile;
 
     private int rocksBroken = 0;
     public bool invincible = false;
@@ -228,8 +230,16 @@ public class PlayerController : MonoBehaviour
         }
         else if (targetTile == ladderTile)
         {
-            string sceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Mine");
+        } else if (targetTile == gateTile)
+        {
+            if (RockSpawner.Instance.keyObtained)
+            {
+                SceneManager.LoadScene("End");
+            } else
+            {
+                Instantiate(gateWarning);
+            }
         }
     }
 

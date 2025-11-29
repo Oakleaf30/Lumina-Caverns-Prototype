@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class RockSpawner : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class RockSpawner : MonoBehaviour
 
     // Assign in Inspector: The tile asset for the rock/ore
     public TileBase rockTile;
+    public TileBase rockTile2;
     public TileBase copperTile;
     public TileBase ironTile;
     public TileBase amethystTile;
     public TileBase rubyTile;
     public TileBase keyTile;
     public TileBase ladderTile;
+    public TileBase gateTile;
 
     // Define the area where rocks can spawn (e.g., area 0 to 50 on X and Y)
     public Vector2Int spawnAreaMin = new Vector2Int(-8, -4);
@@ -143,7 +146,13 @@ public class RockSpawner : MonoBehaviour
         }
         else // 5% chance (96-100)
         {
-            return rockTile;
+            if (level <= 10)
+            {
+                return rockTile;
+            } else
+            {
+                return rockTile2;
+            }
         }
     }
 
@@ -204,7 +213,16 @@ public class RockSpawner : MonoBehaviour
             if (!keyObtained) keySpawned = false;
             ladderSpawned = false;
             level++;
+            Debug.Log(level);
             SpawnRocks(initialRockCount);
+
+            if (level == 21)
+            {
+                ladderSpawned = true;
+                Tilemap gateTileMap = GameObject.FindGameObjectWithTag("GateTile").GetComponent<Tilemap>();
+                gateTileMap.SetTile(new Vector3Int(-9, 0, 0), gateTile);
+                interactionTilemap.SetTile(new Vector3Int(-9, 0, 0), gateTile);
+            }
         }
 
         if (scene.name == "Base")

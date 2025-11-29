@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class Inventory : MonoBehaviour
     public Dictionary<string, int> resources = new Dictionary<string, int>()
     {
         {"Stone", 0},
-        {"Copper", 30},
+        {"Copper", 0},
         {"Iron", 0},
         {"Amethyst", 0},
         {"Ruby", 0}

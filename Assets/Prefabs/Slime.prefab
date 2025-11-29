@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  attackDamage: 5
+  attackDamage: 10
   invincible: 0
 --- !u!58 &1335436680033692004
 CircleCollider2D:

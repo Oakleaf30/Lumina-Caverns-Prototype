@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Repair : MonoBehaviour
 {
+    public Durability.Pickaxe PickaxeType;
     public string RepairType;
     public int RepairCost;
 
@@ -19,7 +20,7 @@ public class Repair : MonoBehaviour
 
     public void RepairPickaxe()
     {
-        if (Durability.Instance.currentPickaxe.ToString() == RepairType && Chest.Instance.storage[RepairType] >= RepairCost)
+        if (Durability.Instance.currentPickaxe == PickaxeType && Chest.Instance.storage[RepairType] >= RepairCost)
         {
             Chest.Instance.storage[RepairType] -= RepairCost;
             Durability.Instance.durability = Durability.Instance.maxDurability;

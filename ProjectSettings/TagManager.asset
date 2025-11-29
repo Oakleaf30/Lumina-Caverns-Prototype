@@ -8,6 +8,7 @@ TagManager:
   - DurabilityText
   - Enemy
   - HealthText
+  - GateTile
   layers:
   - Default
   - TransparentFX
