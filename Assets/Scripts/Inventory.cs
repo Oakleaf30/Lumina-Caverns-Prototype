@@ -35,6 +35,8 @@ public class Inventory : MonoBehaviour
         new UpgradeEntry { name = "Iron Armour", unlocked = false },
     };
 
+    public bool tutorial = false;
+
     void Awake()
     {
         if (Instance == null)

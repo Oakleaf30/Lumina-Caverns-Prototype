@@ -7107,6 +7107,7 @@ MonoBehaviour:
     unlocked: 0
   - name: Iron Armour
     unlocked: 0
+  tutorial: 0
 --- !u!4 &1030236514
 Transform:
   m_ObjectHideFlags: 0
